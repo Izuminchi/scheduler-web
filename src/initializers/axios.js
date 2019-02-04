@@ -4,5 +4,5 @@ export default (axios) => {
     'X-Requested-With': 'XMLHttpRequest',
   };
 
-  axios.defaults.baseURL = 'http://localhost'
+  axios.defaults.baseURL = process.env.VUE_APP_BASE_URL;
 };

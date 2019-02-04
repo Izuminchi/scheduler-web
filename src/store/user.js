@@ -25,7 +25,13 @@ const actions = {
       .then((data) => {
         context.commit('saveCredentials', {token: data.auth_token, user: data.user})
       });
-  }
+  },
+  sendPasswordReestLink(context, payload) {
+    return AuthenticateAPI.sendResetLink(payload.axios, payload.email);
+  },
+  resetPassword(context, payload) {
+    return AuthenticateAPI.resetPassword(payload.axios, payload.code, payload.email, payload.password, payload.password_confirm);
+  },
 };
 
 // mutations
