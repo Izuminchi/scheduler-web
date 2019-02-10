@@ -9,12 +9,12 @@ export const AuthenticateAPI = {
     const response = await axios.post(authPath + 'forgetpassword', {email: email});
     return response.data;
   },
-  async resetPassword(axios, code, email, password, password_confirm) {
+  async resetPassword(axios, code, email, password, passwordConfirm) {
     const response = await axios.post(authPath + 'resetpassword', {
       code: code,
       email: email,
       password: password,
-      password_confirm: password_confirm
+      password_confirm: passwordConfirm
     });
     return response.data;
   },

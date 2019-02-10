@@ -1,7 +1,7 @@
 <template>
   <div>
     <span class="error">{{ this.error }}</span>
-    <input type="email" v-model="email" name="email">
+    <input type="email" placeholder="email" v-model="email" name="email">
     <button v-on:click="onSubmit">Submit</button>
   </div>
 </template>
@@ -16,8 +16,8 @@
     },
     methods: {
       onSubmit() {
-        if (this.email === '') {
-          this.email = 'Invalid email was given';
+        if (!this.isValidEmail(this.email)) {
+          this.error = 'Invalid email was given';
           return;
         }
 
@@ -27,7 +27,7 @@
             this.$router.push('/success');
           })
           .catch((error) => {
-            vm.error = error.response.data.message;
+            vm.error = vm.getErrorText(error);
           });
       },
     },
